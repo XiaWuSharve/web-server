@@ -1,26 +1,97 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ===== 全局背景（斜纹） ===== */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      #f3f4f6,
+      #f3f4f6 6px,
+      #ffffff 6px,
+      #ffffff 12px
+    );
+  color: #1f2937;
+}
+
+/* ===== Header ===== */
+.site-header {
+  @apply flex items-center justify-between px-10 py-4 bg-white/80 backdrop-blur border-b;
+}
+
+.site-header-left {
+  @apply flex items-center gap-4;
+}
+
+.site-header-left img {
+  height: 48px;
+}
+
+.site-header-title {
+  @apply text-xl font-semibold tracking-wide text-slate-700;
+}
+
+/* ===== Hero 区域 ===== */
+.hero {
+  position: relative;
+  margin: 3rem auto;
+  width: 90%;
+  max-width: 1200px;
+  background-color: #334e68;
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 4rem 2rem;
+  text-align: center;
+  color: white;
+}
+
+/* 左右遥感图 */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 28%;
+  height: 100%;
+  background-size: cover;
+  opacity: 0.35;
+}
+
+.hero::before {
+  left: 0;
+  background-image: url("/left.jpg"); /* 自行替换 */
+}
+
+.hero::after {
+  right: 0;
+  background-image: url("/right.jpg");
+}
+
+.hero-title {
+  @apply text-5xl font-bold tracking-widest;
+}
+
+.hero-subtitle {
+  @apply mt-4 text-lg text-slate-200;
+}
+
+/* ===== 内容卡片 ===== */
+.card {
+  @apply bg-white/90 backdrop-blur rounded-xl shadow-lg p-8 max-w-xl mx-auto mt-12;
+}
+
+.upload-btn {
+  @apply mt-6 w-full rounded-lg bg-slate-700 px-6 py-3 text-white font-semibold
+         hover:bg-slate-800 transition;
+}
+
+.file-input {
+  @apply block w-full rounded-md border border-slate-300 p-2;
+}
+
+/* 状态文本 */
+.status {
+  @apply text-center text-slate-600 mt-6;
 }

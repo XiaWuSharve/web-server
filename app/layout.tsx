@@ -1,16 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import Image from "next/image";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,10 +13,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="zh">
+      <body className="antialiased">
+        <header className="site-header">
+          <div className="site-header-left">
+            <Image width={70} height={70} className="object-contain" src="/hcl.png" alt="HCL" />
+            <h1 className="site-header-title">
+              高光谱定标与学习实验室
+            </h1>
+          </div>
+          <div className="text-slate-600 font-medium">
+            软件包
+          </div>
+        </header>
+
         {children}
       </body>
     </html>
